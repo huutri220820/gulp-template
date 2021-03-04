@@ -1,0 +1,25 @@
+{
+	"name": "tutorial",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "gulp start",
+		"build": "gulp build"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^7.0.1",
+		"gulp-connect": "^5.7.0",
+		"gulp-livereload": "^4.0.2",
+		"gulp-sass": "^4.1.0",
+		"gulp-sourcemaps": "^3.0.0",
+		"gulp-typescript": "^6.0.0-alpha.1",
+		"node-sass": "^5.0.0",
+		"typescript": "^4.2.2",
+		"gulp-pug": "^4.0.1",
+		"sass": "^1.32.8"
+	}
+}
