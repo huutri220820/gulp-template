@@ -1,9 +1,0 @@
-@import "./base/index.scss";
-
-.overlay {
-	width: 100px;
-	height: 100px;
-	&:hover {
-		@include cover(red, 0.1);
-	}
-}
