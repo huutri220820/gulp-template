@@ -1,0 +1,280 @@
+// =================== mobile or default =======================
+// space
+@each $space in $space-list {
+	// xs
+	.space-x-#{$space} > :not([hidden]) ~ :not([hidden]) {
+		margin-left: $space * 1px;
+		margin-right: $space * 1px;
+	}
+	.space-y-#{$space} > :not([hidden]) ~ :not([hidden]) {
+		margin-top: $space * 1px;
+		margin-bottom: $space * 1px;
+	}
+}
+// ------------------------------------
+// margin
+.m-auto {
+	margin: auto;
+}
+@each $margin in $margin-list {
+	.m-#{$margin} {
+		margin: $margin * 1px;
+	}
+	.m-x-#{$margin} {
+		margin-right: $margin * 1px;
+		margin-left: $margin * 1px;
+	}
+	.m-y-#{$margin} {
+		margin-top: $margin * 1px;
+		margin-bottom: $margin * 1px;
+	}
+	.m-l-#{$margin} {
+		margin-left: $margin * 1px;
+	}
+	.m-r-#{$margin} {
+		margin-right: $margin * 1px;
+	}
+	.m-t-#{$margin} {
+		margin-top: $margin * 1px;
+	}
+	.m-b-#{$margin} {
+		margin-bottom: $margin * 1px;
+	}
+}
+// ------------------------------------
+
+// padding
+@each $padding in $padding-list {
+	.m-#{$padding} {
+		padding: $padding * 1px;
+	}
+	.m-x-#{$padding} {
+		padding-right: $padding * 1px;
+		padding-left: $padding * 1px;
+	}
+	.m-y-#{$padding} {
+		padding-top: $padding * 1px;
+		padding-bottom: $padding * 1px;
+	}
+	.m-l-#{$padding} {
+		padding-left: $padding * 1px;
+	}
+	.m-r-#{$padding} {
+		padding-right: $padding * 1px;
+	}
+	.m-t-#{$padding} {
+		padding-top: $padding * 1px;
+	}
+	.m-b-#{$padding} {
+		padding-bottom: $padding * 1px;
+	}
+}
+// ------------------------------------
+
+// text
+.text {
+	&-left {
+		text-align: left;
+	}
+	&-right {
+		text-align: right;
+	}
+	&-center {
+		text-align: center;
+	}
+}
+// ------------------------------------
+
+// display
+.display {
+	&-none {
+		display: none;
+	}
+	&-block {
+		display: block;
+	}
+	&-inline-block {
+		display: inline-block;
+	}
+	&-inline {
+		display: inline;
+	}
+	&-flex {
+		display: flex;
+	}
+}
+// ------------------------------------
+
+.justify {
+	&-between {
+		justify-content: space-between;
+	}
+	&-around {
+		justify-content: space-around;
+	}
+	&-center {
+		justify-content: center;
+	}
+	&-start {
+		justify-content: flex-start;
+	}
+	&-end {
+		justify-content: flex-end;
+	}
+}
+
+.items {
+	&-center {
+		align-items: center;
+	}
+	&-start {
+		align-items: flex-start;
+	}
+	&-end {
+		align-items: flex-end;
+	}
+}
+// ------------------------------------
+// ========================================================
+
+// =================== another device=======================
+@each $device in $device-list {
+	// space
+	@each $space in $space-list {
+		// xs
+		.#{$device}\:space-x-#{$space} > :not([hidden]) ~ :not([hidden]) {
+			margin-left: $space * 1px;
+			margin-right: $space * 1px;
+		}
+		.#{$device}\:space-y-#{$space} > :not([hidden]) ~ :not([hidden]) {
+			margin-top: $space * 1px;
+			margin-bottom: $space * 1px;
+		}
+	}
+	// ------------------------------------
+	// margin
+	.#{$device}\:m-auto {
+		margin: auto;
+	}
+	@each $margin in $margin-list {
+		.#{$device}\:m-#{$margin} {
+			margin: $margin * 1px;
+		}
+		.#{$device}\:m-x-#{$margin} {
+			margin-right: $margin * 1px;
+			margin-left: $margin * 1px;
+		}
+		.#{$device}\:m-y-#{$margin} {
+			margin-top: $margin * 1px;
+			margin-bottom: $margin * 1px;
+		}
+		.#{$device}\:m-l-#{$margin} {
+			margin-left: $margin * 1px;
+		}
+		.#{$device}\:m-r-#{$margin} {
+			margin-right: $margin * 1px;
+		}
+		.#{$device}\:m-t-#{$margin} {
+			margin-top: $margin * 1px;
+		}
+		.#{$device}\:m-b-#{$margin} {
+			margin-bottom: $margin * 1px;
+		}
+	}
+	// ------------------------------------
+
+	// padding
+	@each $padding in $padding-list {
+		.#{$device}\:m-#{$padding} {
+			padding: $padding * 1px;
+		}
+		.#{$device}\:m-x-#{$padding} {
+			padding-right: $padding * 1px;
+			padding-left: $padding * 1px;
+		}
+		.#{$device}\:m-y-#{$padding} {
+			padding-top: $padding * 1px;
+			padding-bottom: $padding * 1px;
+		}
+		.#{$device}\:m-l-#{$padding} {
+			padding-left: $padding * 1px;
+		}
+		.#{$device}\:m-r-#{$padding} {
+			padding-right: $padding * 1px;
+		}
+		.#{$device}\:m-t-#{$padding} {
+			padding-top: $padding * 1px;
+		}
+		.#{$device}\:m-b-#{$padding} {
+			padding-bottom: $padding * 1px;
+		}
+	}
+	// ------------------------------------
+
+	// text
+	.#{$device}\:text {
+		&-left {
+			text-align: left;
+		}
+		&-right {
+			text-align: right;
+		}
+		&-center {
+			text-align: center;
+		}
+	}
+	// ------------------------------------
+
+	// display
+	.#{$device}\:display {
+		&-none {
+			display: none;
+		}
+		&-block {
+			display: block;
+		}
+		&-inline-block {
+			display: inline-block;
+		}
+		&-inline {
+			display: inline;
+		}
+		&-flex {
+			display: flex;
+		}
+	}
+	// ------------------------------------
+
+	.#{$device}\:justify {
+		&-between {
+			justify-content: space-between;
+		}
+		&-around {
+			justify-content: space-around;
+		}
+		&-center {
+			justify-content: center;
+		}
+		&-start {
+			justify-content: flex-start;
+		}
+		&-end {
+			justify-content: flex-end;
+		}
+	}
+
+	.#{$device}\:items {
+		&-center {
+			align-items: center;
+		}
+		&-start {
+			align-items: flex-start;
+		}
+		&-end {
+			align-items: flex-end;
+		}
+	}
+
+	// position
+	// ------------------------------------
+}

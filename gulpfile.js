@@ -18,15 +18,19 @@ gulp.task("connect", function (cb) {
 
 gulp.task("scss", function (cb) {
 	return gulp
-		.src("./src/scss/**/*.scss", {allowEmpty: true})
-		.pipe(sourcemaps.init())
+		.src(["./src/scss/pages/**/*.scss", "./src/scss/*.scss"], {allowEmpty: true})
+		.pipe(
+			sourcemaps.init({
+				loadMaps: true,
+			})
+		)
 		.pipe(sass().on("error", sass.logError))
 		.pipe(
 			autoprefixer({
 				cascade: false,
 			})
 		)
-		.pipe(sourcemaps.write())
+		.pipe(sourcemaps.write("./maps"))
 		.pipe(gulp.dest("./dist/css"))
 		.pipe(connect.reload());
 });
@@ -38,14 +42,18 @@ gulp.task("pug", function () {
 gulp.task("typescript", function () {
 	return gulp
 		.src("./src/ts/**/*.ts")
-		.pipe(sourcemaps.init())
+		.pipe(
+			sourcemaps.init({
+				loadMaps: true,
+			})
+		)
 		.pipe(
 			ts({
 				declaration: true,
 				module: "commonjs",
 			})
 		)
-		.pipe(sourcemaps.write())
+		.pipe(sourcemaps.write("./maps"))
 		.pipe(gulp.dest("./dist/js"))
 		.pipe(connect.reload());
 });

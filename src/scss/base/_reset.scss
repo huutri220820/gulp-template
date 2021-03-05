@@ -83,6 +83,14 @@ textarea {
 	margin: 0; /* 2 */
 }
 
+button:focus,
+input:focus,
+optgroup:focus,
+select:focus,
+textarea:focus {
+	outline: none;
+}
+
 button,
 select {
 	/* 1 */

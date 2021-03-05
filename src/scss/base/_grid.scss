@@ -1,0 +1,31 @@
+.grid {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	&.wide {
+		max-width: $wide;
+		@include respond(xs) {
+			max-width: 95%;
+		}
+		@include respond(md) {
+			max-width: 80%;
+		}
+		@include respond(lg) {
+			max-width: 960px;
+		}
+		@include respond(xl) {
+			max-width: $wide * 1px;
+		}
+	}
+}
+
+.row {
+	margin-left: ($gutter/2) * 1px;
+	&.no-gutters {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+.col {
+}

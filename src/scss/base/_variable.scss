@@ -1,0 +1,19 @@
+// breakpoints
+$xs: 425px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1440px;
+
+// font family
+$font-body: sans-serif;
+
+// wide
+$wide: 1200;
+$gutter: 30;
+
+// list not xs : xs - default
+$device-list: md, lg, xl;
+$space-list: 0, 10, 20;
+$margin-list: 0, 10, 20;
+$padding-list: 0, 10, 20;
+$font-size-list: 0, 10, 20;
