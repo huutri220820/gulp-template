@@ -5,10 +5,11 @@ const autoprefixer = require("gulp-autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
 const connect = require("gulp-connect");
 const ts = require("gulp-typescript");
+const fileInclude = require("gulp-file-include");
 
 sass.compiler = require("sass");
 
-gulp.task("connect", function (cb) {
+gulp.task("connect", async function (cb) {
 	connect.server({
 		root: "dist",
 		livereload: true,
@@ -16,7 +17,7 @@ gulp.task("connect", function (cb) {
 	cb();
 });
 
-gulp.task("scss", function (cb) {
+gulp.task("scss", async function (cb) {
 	return gulp
 		.src(["./src/scss/pages/**/*.scss", "./src/scss/*.scss"], {allowEmpty: true})
 		.pipe(
@@ -35,13 +36,13 @@ gulp.task("scss", function (cb) {
 		.pipe(connect.reload());
 });
 
-gulp.task("pug", function () {
-	return gulp.src("./src/pug/**/*.pug").pipe(pug()).pipe(gulp.dest("./dist")).pipe(connect.reload());
+gulp.task("pug", async function () {
+	return gulp.src("./src/pug/**/*.pug", {allowEmpty: true}).pipe(pug().on("error", pug.logError)).pipe(gulp.dest("./dist")).pipe(connect.reload());
 });
 
-gulp.task("typescript", function () {
+gulp.task("typescript", async function () {
 	return gulp
-		.src("./src/ts/**/*.ts")
+		.src("./src/ts/**/*.ts", {allowEmpty: true})
 		.pipe(
 			sourcemaps.init({
 				loadMaps: true,
@@ -51,18 +52,31 @@ gulp.task("typescript", function () {
 			ts({
 				declaration: true,
 				module: "commonjs",
-			})
+			}).on("error", ts.logError)
 		)
 		.pipe(sourcemaps.write("./maps"))
-		.pipe(gulp.dest("./dist/js"))
+		.pipe(gulp.dest("./dist/js/"))
 		.pipe(connect.reload());
 });
 
-gulp.task("watch", function () {
+gulp.task("html", async function () {
+	gulp.src(["./src/html/**/*.html", "!./src/html/components/**/*.html"], {allowEmpty: true})
+		.pipe(
+			fileInclude({
+				prefix: "@@",
+				basepath: "@file",
+			})
+		)
+		.pipe(gulp.dest("./dist"))
+		.pipe(connect.reload());
+});
+
+gulp.task("watch", async function () {
 	gulp.watch("./src/scss/**/*.scss", gulp.series("scss"));
+	gulp.watch("./src/html/**/*.html", gulp.series("html"));
 	gulp.watch("./src/pug/**/*.pug", gulp.series("pug"));
 	gulp.watch("./src/ts/**/*.ts", gulp.series("typescript"));
 });
 
 gulp.task("start", gulp.series(["connect", "watch"]));
-gulp.task("build", gulp.series(["scss", "pug", "typescript"]));
+gulp.task("build", gulp.series(["scss", "pug", "typescript", "html"]));
