@@ -37,7 +37,10 @@ gulp.task("scss", async function (cb) {
 });
 
 gulp.task("pug", async function () {
-	return gulp.src("./src/pug/**/*.pug", {allowEmpty: true}).pipe(pug().on("error", pug.logError)).pipe(gulp.dest("./dist")).pipe(connect.reload());
+	return gulp
+		.src("./src/pug/**/*.pug", {allowEmpty: true})
+		.pipe(pug({pretty: true}))
+		.pipe(gulp.dest("./dist"));
 });
 
 gulp.task("typescript", async function () {
@@ -52,7 +55,7 @@ gulp.task("typescript", async function () {
 			ts({
 				declaration: true,
 				module: "commonjs",
-			}).on("error", ts.logError)
+			})
 		)
 		.pipe(sourcemaps.write("./maps"))
 		.pipe(gulp.dest("./dist/js/"))
